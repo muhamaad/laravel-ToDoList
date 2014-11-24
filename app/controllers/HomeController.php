@@ -16,6 +16,7 @@ class HomeController extends BaseController {
 				'items'=>$items
 			));
 	}
+
 	public function postIndex()
 	{
 		$id= Input::get('id');
@@ -29,6 +30,16 @@ class HomeController extends BaseController {
 		return Redirect::route('home');
 		
 	}
+
+	public function getdone( $id)
+	{
+		$userId=Auth::user()->id;
+		$item = Item::findOrFail($id);
+		$item->done = true;
+		$item->save();
+		return Redirect::route('home');	
+	}
+
 
 	public function getnew(){
 		return View::make('new');

@@ -12,12 +12,14 @@ Route::get('/new',array('as'=>'new','uses'=>'HomeController@getnew'));
 Route::post('new',array('uses'=>'HomeController@postnew'))->before('csrf');
 
 Route::get('/delete/{task}',array('as'=>'delete','uses'=>'HomeController@getdelete'));
+Route::get('/done/{id}', array('as' =>'done' ,'uses'=>'HomeController@getdone' ));
 
 Route::get('/login', array('as' =>'login' ,'uses'=>'AuthController@getLogin' ))->before('guest');
 Route::post('login', array('uses' =>'AuthController@postLogin' ))->before('csrf');
 
 Route::get('/register', array('as' =>'register' ,'uses'=>'HomeController@getregister' ));
 Route::post('register', array('uses' =>'HomeController@postregister' ))->before('csrf');
+
 /*Route::get('/login', function()
 {
     return 'Hello World';
